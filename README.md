@@ -1,4 +1,4 @@
-![Elmer de la Paz Ttito](nest-1.jpg)
+![Elmer de la Paz Ttito](nest-1.png)
 
 <img alt="Night Coding" src="./assets/Hand%20Wave.gif" width='40' align="left"/><h2 align="left">Hey there! I'm De la Paz Ttito Elmer</h2>
 
