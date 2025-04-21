@@ -1,0 +1,64 @@
+import mysql.connector
+from pymongo import MongoClient
+
+# Conectar a MongoDB
+mongo_client = MongoClient("mongodb://localhost:27017/")
+mongo_db = mongo_client['ecommerce']
+productos_collection = mongo_db['productos']
+
+# Conectar a MySQL
+mysql_connection = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="root",  # Reemplaza con tu contraseña
+    database="ecommerce_db"
+)
+mysql_cursor = mysql_connection.cursor()
+
+# Crear un usuario (en MySQL)
+def crear_usuario(nombre, correo):
+    query = "INSERT INTO usuarios (nombre, correo) VALUES (%s, %s)"
+    mysql_cursor.execute(query, (nombre, correo))
+    mysql_connection.commit()
+    print(f"Usuario {nombre} creado con éxito")
+
+# Crear un pedido (en MySQL)
+def crear_pedido(usuario_id, producto_id, cantidad):
+    query = "INSERT INTO pedidos (usuario_id, producto_id, cantidad) VALUES (%s, %s, %s)"
+    mysql_cursor.execute(query, (usuario_id, producto_id, cantidad))
+    mysql_connection.commit()
+    print(f"Pedido creado para el usuario {usuario_id}")
+
+# Agregar un producto (en MongoDB)
+def agregar_producto(nombre, precio, descripcion, categoria, atributos):
+    producto = {
+        "nombre": nombre,
+        "precio": precio,
+        "descripcion": descripcion,
+        "categoria": categoria,
+        "atributos": atributos
+    }
+    productos_collection.insert_one(producto)
+    print(f"Producto {nombre} agregado a MongoDB")
+
+# Obtener un producto (de MongoDB)
+def obtener_producto(nombre_producto):
+    producto = productos_collection.find_one({"nombre": nombre_producto})
+    if producto:
+        print(f"Producto encontrado: {producto}")
+    else:
+        print(f"Producto {nombre_producto} no encontrado")
+
+# Ejemplo de uso:
+# 1. Agregar productos a MongoDB
+agregar_producto("Camiseta", 20.5, "Camiseta de algodón", "Ropa", {"tamaño": "M", "color": "Rojo"})
+agregar_producto("Zapatos", 50.0, "Zapatos deportivos", "Calzado", {"tamaño": "42", "color": "Negro"})
+
+# 2. Crear usuario en MySQL
+crear_usuario("Juan Pérez", "juan@example.com")
+
+# 3. Obtener un producto de MongoDB
+obtener_producto("Camiseta")
+
+# 4. Crear un pedido en MySQL
+crear_pedido(1, "Camiseta", 2)
