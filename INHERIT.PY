@@ -65,7 +65,7 @@ class CocheDeportivo(Militar):
 
 cochesito = CocheDeportivo("Elmer",1,45)
 print(cochesito)
-
+state_pops.tail(52).head(51).sum(numeric_only=True)
 
 if __name__ == "__main__":
     main()
