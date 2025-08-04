@@ -7,6 +7,15 @@ class Militar:
     def __str__(self):
         return f'{self._nombre}, edad {self._edad}'
 
+ def __init__(self, nombre: str, edad: int):
+        self._nombre = nombre
+        self._edad = edad
+        self._activo = True  # Encapsulación correcta
+
+    def __str__(self):
+        return f'{self._nombre}, edad {self._edad}'
+
+
     @property
     def nombre(self):
         return self._nombre
