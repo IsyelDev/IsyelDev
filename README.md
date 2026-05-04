@@ -133,16 +133,13 @@ const elmer = {
 </div>
 
 ---
-
-## 🐍 Contribution Snake
+## 📈 Contribution Activity
 
 <div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/IsyelDev/IsyelDev/output/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/IsyelDev/IsyelDev/output/github-contribution-grid-snake.svg" />
-    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/IsyelDev/IsyelDev/output/github-contribution-grid-snake.svg" />
-  </picture>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=agonzalescr7-dot&theme=tokyo-night&hide_border=true&area=true&color=818cf8&line=818cf8&point=ffffff" width="100%" alt="activity graph"/>
 </div>
+
+---
 
 > ⚠️ Para activar la serpiente crea `.github/workflows/snake.yml` — [ver instrucciones aquí](https://github.com/Platane/snk)
 
